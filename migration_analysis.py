@@ -13,3 +13,27 @@ plotly.offline.plot(fig_01, filename='migration-government-id.html')
 
 fig_02 = px.bar(df_02, x="reason", y=["employed", 'unemployed', 'out-of-labour-force'], color_discrete_sequence=["#be95c4", "#2a9d8f", "#e9c46a"], title="Migration Reasons Analysis by Employment Status")
 plotly.offline.plot(fig_02, filename='migration-reason.html')
+
+# Load your data
+df_03 = pd.read_csv('state-migration.csv')
+
+# Create the scatter map
+fig = px.scatter_mapbox(
+    df_03,
+    lat='Latitude',
+    lon='Longitude',
+    hover_name='State/UT',
+    hover_data={'Rural': True, 'Urban': True, 'All': True, 'Latitude': False, 'Longitude': False},
+    size='All',  # Bubble size by 'All' column
+    color='All', # Bubble color by 'All' column
+    color_continuous_scale='Viridis',
+    size_max=30,
+    zoom=4,
+    mapbox_style='carto-positron'  # Free Mapbox style
+)
+
+fig.update_layout(
+    title='India States/UTs Data Visualization',
+    margin={'r':0, 't':40, 'l':0, 'b':0}
+)
+fig.show()
