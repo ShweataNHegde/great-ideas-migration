@@ -3,8 +3,8 @@ import pandas as pd
 import plotly
 import plotly.express as px
 
-df_01 = pd.read_csv('government-id.csv')
-df_02 = pd.read_csv('migration-reason.csv')
+df_01 = pd.read_csv('multiple-indicator-survey/government-id.csv')
+df_02 = pd.read_csv('multiple-indicator-survey/migration-reason.csv')
 
 # Make a stacked bar chart of all the ration-card, voter-id, passport and aadhar migration
 
@@ -15,7 +15,7 @@ fig_02 = px.bar(df_02, x="reason", y=["employed", 'unemployed', 'out-of-labour-f
 plotly.offline.plot(fig_02, filename='migration-reason.html')
 
 # Load your data
-df_03 = pd.read_csv('state-migration.csv')
+df_03 = pd.read_csv('multiple-indicator-survey/state-migration.csv')
 
 # Create the scatter map
 fig = px.scatter_mapbox(
